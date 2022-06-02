@@ -8,6 +8,7 @@
          bootstrap="tests/bootstrap.php"
          convertDeprecationsToExceptions="false"
 >
+
     <php>
         <ini name="display_errors" value="1" />
         <ini name="error_reporting" value="-1" />
@@ -18,23 +19,18 @@
     </php>
 
     <testsuites>
-        <testsuite name="Project Test Suite">
+        <testsuite name="Série de tests, dossier : /tests/">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
-
-    <coverage processUncoveredFiles="true">
-        <include>
-            <directory suffix=".php">src</directory>
-        </include>
-    </coverage>
 
     <listeners>
         <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener" />
     </listeners>
 
     <!-- Run `composer require symfony/panther` before enabling this extension -->
-    <!--
+    <!--        
+
     <extensions>
         <extension class="Symfony\Component\Panther\ServerExtension" />
     </extensions>
