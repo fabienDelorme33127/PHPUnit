@@ -2,41 +2,37 @@
 
 namespace App\Tests;
 
+
 use Tableau;
 use PHPUnit\Framework\TestCase;
 
 class TableauTest extends TestCase
 { 
+        protected $tab;
+
+        protected function setUp(): void
+        {
+                require_once 'Tableau.php';
+
+                $this->tab = new Tableau();
+        }
+
         public function testArrayEmpty()
         {
-                require 'Tableau.php';
-
-                $tab = new Tableau();
-
-                $this->assertEquals(0, $tab->countArray());
-
-                return $tab;
+                $this->assertEquals(0, $this->tab->countArray());
         }
        
-        /**
-         * @depends testArrayEmpty
-         */
-        public function testArrayPush(Tableau $tab)
+        public function testArrayPush()
         {
-                $tab->fillArray(2);
+                $this->tab->fillArray(2);
 
-                $this->assertEquals(1, $tab->countArray());
-
-                return $tab;
+                $this->assertEquals(1, $this->tab->countArray());
         }
 
-        /**
-         * @depends testArrayPush
-         */
-        public function testPopArray(Tableau $tab)
+        public function testPopArray()
         {
-                $tab->popArray();
+                $this->tab->popArray();
                 
-                $this->assertEquals(0, $tab->countArray());
+                $this->assertEquals(0, $this->tab->countArray());
         }
 }
