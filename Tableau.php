@@ -2,11 +2,19 @@
 
 class Tableau
 {
+        public const MAX_ITEMS =  5;
+
         private $tab = [];
 
-        public function fillArray($val)
+        /**
+         * @throws TabException if item in tab exceeds MAX_ITEMS 
+         */
+        public function fillArray($item)
         {
-                $this->tab[] = $val;
+                if($this->countArray() == static::MAX_ITEMS){
+                        throw new TabException("tab is full");
+                }
+                $this->tab[] = $item;
         }
 
         public function popArray()
